@@ -1,0 +1,35 @@
+🎯 GUION DE MICROTEXTOS UX – TIPSTER
+
+🌀 CARRUSEL DE SELECCIÓN DE ROL
+Título: Elige cómo quieres vivir la experiencia Tipster.
+Cliente: Reconoce el buen servicio y gana recompensas.
+Trabajador: Recibe propinas y construye tu reputación.
+Negocio: Gestiona tu equipo y destaca en el mapa Tipster.
+
+🔐 LOGIN / REGISTRO
+Título: Bienvenido a Tipster.
+Botones: Iniciar sesión / Crear cuenta
+
+🏠 DASHBOARD CLIENTE
+Encabezado: Hola, [Nombre]. Gracias por reconocer el trabajo de los demás.
+Botones: Escanear QR / Ver recompensas
+
+💶 PROPINA
+Título: Elige tu propina 💙
+Botón: Enviar propina
+
+✨ CONFIRMACIÓN
+Mensaje: Pequeños gestos crean grandes experiencias.
+Subtexto: Gracias por reconocer su trabajo.
+
+🎁 RECOMPENSAS
+Encabezado: Reconoce, comparte y gana por construir una comunidad más justa.
+Botón: Invita y gana 💶
+
+🧑‍🍳 DASHBOARD TRABAJADOR
+Título: Tu valoración promedio es de 4.8 ⭐
+Subtexto: Progreso hacia el siguiente nivel: 92%.
+
+🏢 DASHBOARD NEGOCIO
+Título: Resumen del mes — Café Azul ☕
+Botón: Solicitar nueva promoción

@@ -1,0 +1,26 @@
+{
+    "name": "@tipster/db",
+    "version": "0.0.0",
+    "main": "index.ts",
+    "types": "index.ts",
+    "scripts": {
+        "generate": "prisma generate",
+        "db:push": "prisma db push",
+        "migrate": "prisma migrate dev",
+        "seed": "prisma db seed",
+        "studio": "prisma studio"
+    },
+    "prisma": {
+        "seed": "ts-node prisma/seed.ts"
+    },
+    "dependencies": {
+        "@neondatabase/serverless": "^1.0.2",
+        "@prisma/client": "^5.22.0"
+    },
+    "devDependencies": {
+        "@tipster/config": "workspace:*",
+        "prisma": "^5.22.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3"
+    }
+}

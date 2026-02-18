@@ -1,0 +1,147 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
+}
+
+enum Role {
+  CLIENT
+  WORKER
+  BUSINESS
+  ADMIN_SUPPORT
+}
+
+enum LinkStatus {
+  NONE
+  INVITED
+  ACTIVE
+  REJECTED
+}
+
+enum TipStatus {
+  PENDING
+  CONFIRMED
+  FAILED
+  REFUNDED
+}
+
+enum NotificationType {
+  POSITIVE
+  SUPPORT
+  ALERT
+}
+
+enum SupportStatus {
+  OPEN
+  IN_PROGRESS
+  CLOSED
+}
+
+enum SuspiciousSeverity {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  role         Role
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  workerProfile   WorkerProfile?
+  businessProfile BusinessProfile?
+  tipsGiven       Tip[]
+  notifications   Notification[]
+  supportTickets  SupportTicket[]
+  suspiciousEvents SuspiciousEvent[]
+}
+
+model WorkerProfile {
+  id              String      @id @default(uuid())
+  userId          String      @unique
+  user            User        @relation(fields: [userId], references: [id])
+  businessId      String?
+  business        BusinessProfile? @relation(fields: [businessId], references: [id])
+  linkStatus      LinkStatus  @default(NONE)
+  displayName     String
+  qrSlug          String      @unique
+  bio             String?
+  photoUrl        String?
+  stripeAccountId String?
+  isActive        Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  tipsReceived    Tip[]
+
+  @@index([qrSlug])
+}
+
+model BusinessProfile {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id])
+  companyName     String
+  address         String
+  logoUrl         String?
+  stripeAccountId String?
+  createdAt       DateTime @default(now())
+
+  workers         WorkerProfile[]
+  tipsReceived    Tip[]
+}
+
+model Tip {
+  id                    String    @id @default(uuid())
+  amount                Int
+  currency              String
+  status                TipStatus
+  stripePaymentIntentId String    @unique
+  payerId               String?
+  payer                 User?     @relation(fields: [payerId], references: [id])
+  payerName             String?
+  message               String?
+  workerId              String
+  worker                WorkerProfile @relation(fields: [workerId], references: [id])
+  businessId            String?
+  business              BusinessProfile? @relation(fields: [businessId], references: [id])
+  createdAt             DateTime  @default(now())
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id])
+  type      NotificationType
+  title     String
+  body      String
+  linkTarget String
+  readAt    DateTime?
+  createdAt DateTime         @default(now())
+}
+
+model SupportTicket {
+  id          String        @id @default(uuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  category    String
+  description String
+  status      SupportStatus
+  createdAt   DateTime      @default(now())
+}
+
+model SuspiciousEvent {
+  id        String             @id @default(uuid())
+  userId    String?
+  user      User?              @relation(fields: [userId], references: [id])
+  type      String
+  severity  SuspiciousSeverity
+  metadata  Json
+  createdAt DateTime           @default(now())
+}

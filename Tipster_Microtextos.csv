@@ -1,0 +1,21 @@
+﻿Pantalla,Tipo,Texto
+Carrusel,Título,Elige cómo quieres vivir la experiencia Tipster.
+Carrusel,Cliente,Reconoce el buen servicio y gana recompensas.
+Carrusel,Trabajador,Recibe propinas y construye tu reputación.
+Carrusel,Negocio,Gestiona tu equipo y destaca en el mapa Tipster.
+Login,Título,Bienvenido a Tipster.
+Login,Botón,Iniciar sesión
+Login,Botón,Crear cuenta
+Dashboard Cliente,Encabezado,"Hola, [Nombre]. Gracias por reconocer el trabajo de los demás."
+Dashboard Cliente,Botón,Escanear QR
+Dashboard Cliente,Botón,Ver recompensas
+Propina,Título,Elige tu propina 💙
+Propina,Botón,Enviar propina
+Confirmación,Mensaje,Pequeños gestos crean grandes experiencias.
+Confirmación,Subtexto,Gracias por reconocer su trabajo.
+Recompensas,Encabezado,"Reconoce, comparte y gana por construir una comunidad más justa."
+Recompensas,Botón,Invita y gana 💶
+Dashboard Trabajador,Título,Tu valoración promedio es de 4.8 ⭐
+Dashboard Trabajador,Subtexto,Progreso hacia el siguiente nivel: 92%.
+Dashboard Negocio,Título,Resumen del mes — Café Azul ☕
+Dashboard Negocio,Botón,Solicitar nueva promoción
