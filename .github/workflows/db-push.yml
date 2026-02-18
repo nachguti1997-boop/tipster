@@ -19,7 +19,8 @@ jobs:
 
       - run: pnpm install
 
-      - name: Run Prisma DB Push
+        - name: Run Prisma DB Push
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_DATABASE_URL: ${{ secrets.DIRECT_DATABASE_URL }}
         run: pnpm --filter @tipster/db exec prisma db push
